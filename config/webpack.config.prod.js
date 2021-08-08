@@ -19,7 +19,7 @@ const publicPath = paths.servedPath;
 // Some apps do not use client-side routing with pushState.
 // For these, "homepage" can be set to "." to enable relative asset paths.
 const shouldUseRelativeAssetPaths = publicPath === './';
-// Source maps are resource heavy and can cause out of memory issue for large source files.
+// Source maps are staff heavy and can cause out of memory issue for large source files.
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
 // `publicUrl` is just like `publicPath`, but we will provide it to our app
 // as %PUBLIC_URL% in `index.html` and `process.env.PUBLIC_URL` in JavaScript.
@@ -302,7 +302,7 @@ module.exports = {
           // This message occurs for every build and is a bit too noisy.
           return;
         }
-        if (message.indexOf('Skipping static resource') === 0) {
+        if (message.indexOf('Skipping static staff') === 0) {
           // This message obscures real errors so we ignore it.
           // https://github.com/facebookincubator/create-react-app/issues/2612
           return;

@@ -21,8 +21,9 @@ import Calendars from '../header/Calendars';
 import UForm from '../form/Form';
 import InList from '../stockin/InList';
 import noMatch from './404';
-import OutList from "../stockout/OutList";
-import Staff from "../staff/Staff";*/
+import OutList from "../stockout/OutList";*/
+
+import Staff from "./../staff/staff";
 // 引入layout中内容
 const {Content, Footer} = Layout;
 
@@ -70,25 +71,24 @@ class Admin extends Component {
         }
         const collapsed = this.state.collapsed;
         return (
-            <Layout className='admin-pane'>
-                {/*左边*/}
-                <LeftNav collapsed={collapsed}/>
-            <Layout>
-                {/*<HeaderCustom collapsed={collapsed} toggle={this.toggle} username={name}/>
-                <Content style={{margin: '0 16px'}}>
+            <Layout className='admin-pane' >
+                <LeftNav collapsed={collapsed} />
+            <Layout style={{ marginLeft: 200 }}>
+                <div className='rightSide'>
+                    <RightHead collapsed={collapsed} toggle={this.toggle}/>
+                </div>
+                <Content className='admin-content' >
                     <Switch>
-                        <Route exact path={'/app'} component={MIndex} />
+                        {/*<Route exact path={'/app'} component={MIndex} />
                         <Route exact path={'/app/form'} component={UForm} />
                         <Route exact path={'/app/inlist'} component={InList} />
-                        <Route exact path={'/app/outlist'} component={Outlist} />
-                        <Route exact path={'/app/staff'} component={Staff} />
-                        <Route exact path={'/app/header/Calendars'} component={Calendars} />
-                        <Route component={noMatch} />
+                        <Route exact path={'/app/outlist'} component={Outlist} />*/}
+                        <Route path={'/staff'} component={Staff}/>
                     </Switch>
-                </Content>*/}
-                <Footer style={{textAlign: 'center'}}>
-                    UsedCar ©2020-2021 Created by Weiting Huang
-                </Footer>
+                </Content>
+                <foot>
+                    <h4 style={{textAlign:"center"}}>Weiting Huang@Used Car 2020-2021</h4>
+                </foot>
             </Layout>
             </Layout>
         );

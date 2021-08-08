@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 // 引入withRouter，使得左边可以操作路由
-import {withRouter, Link} from 'react-router-dom'
+import {withRouter, Link, Route} from 'react-router-dom'
 // 引入prop-types
 import PropTypes from 'prop-types'
 // 引入消息订阅
@@ -24,30 +24,51 @@ const {Sider} = Layout;
 const {Item, SubMenu} = Menu
 
 class LeftNav extends Component {
-
+    static propTypes = {
+        collapsed: PropTypes.bool.isRequired
+    };
     render() {
         return (
-            <Sider trigger={null} collapsible>
-                <div className="logo_admin" >
+            <Sider trigger={null} collapsible collapsed={this.props.collapsed}
+                   style={{overflow: 'auto',
+                       height: '100vh',
+                       position: 'fixed',
+                       left: 0,}}>
+                <div className="logo_admin" style={this.props.collapsed ? {position:"relative",width:30,left:5} : {}}>
                 </div>
                 <Menu
                     theme="dark"
                     mode="inline"
                 >
                     <Menu.Item key={"/app"}>
-                        <Link to={"/app"}><HomeOutlined /><span>Home</span></Link>
+                        <Link to={"/app"}>
+                            <HomeOutlined style={this.props.collapsed ? {fontSize: 20} : {}}/>
+                            <span style={this.props.collapsed ? {display: 'none'} : {}}>Home</span>
+                        </Link>
                     </Menu.Item>
                     <Menu.Item key={"/app/form"}>
-                        <Link to={"/app/form"}><FileTextOutlined /><span>Car List</span></Link>
+                        <Link to={"/app/form"}>
+                            <FileTextOutlined style={this.props.collapsed ? {fontSize: 20} : {}}/>
+                            <span style={this.props.collapsed ? {display: 'none'} : {}}>Car List</span>
+                        </Link>
                     </Menu.Item>
                     <Menu.Item key={"/app/inlist"}>
-                        <Link to={"/app/inlist"}><PlusSquareOutlined /><span>Car In</span></Link>
+                        <Link to={"/app/inlist"}>
+                            <PlusSquareOutlined style={this.props.collapsed ? {fontSize: 20} : {}}/>
+                            <span style={this.props.collapsed ? {display: 'none'} : {}}>Car In</span>
+                        </Link>
                     </Menu.Item>
                     <Menu.Item key={"/app/outlist"}>
-                        <Link to={"/app/outlist"}><LogoutOutlined /><span>Car Out</span></Link>
+                        <Link to={"/app/outlist"}>
+                            <LogoutOutlined style={this.props.collapsed ? {fontSize: 20} : {}}/>
+                            <span style={this.props.collapsed ? {display: 'none'} : {}}>Car Out</span>
+                        </Link>
                     </Menu.Item>
-                    <Menu.Item key={"/app/staff"}>
-                        <Link to={"/app/staff"}><TeamOutlined /><span>Staff</span></Link>
+                    <Menu.Item key={"/staff"}>
+                        <Link to={"/staff"}>
+                            <TeamOutlined style={this.props.collapsed ? {fontSize: 20} : {}}/>
+                            <span style={this.props.collapsed ? {display: 'none'} : {}}>Staff</span>
+                        </Link>
                     </Menu.Item>
                 </Menu>
             </Sider>

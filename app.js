@@ -44,11 +44,11 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // 引入路由相关
-const adminRouter = require('./routes/admin')
+const adminRouter = require('./routes/admin');
+const staffRouter = require('./routes/staff')
 /*const liveRouter = require('./routes/live')
 const activitiesRouter = require('./routes/activities')
 const lifejobRouter = require('./routes/lifejob')
-const resourceRouter = require('./routes/resource')
 const homeRouter = require('./routes/home');*/
 
 // 使用权限控制中间件
@@ -56,10 +56,10 @@ app.use(authControl)
 
 // 使用路由中间件
 app.use('/api/auth/admin', adminRouter);
+app.use('/api/auth/staff', staffRouter);
 /*app.use('/api/auth/live', liveRouter);
 app.use('/api/auth/activities', activitiesRouter);
 app.use('/api/auth/lifejob', lifejobRouter);
-app.use('/api/auth/resource', resourceRouter);
 app.use('/api/auth/home', homeRouter);*/
 // 页面404处理中间件
 app.use(function (req, res, next) {
